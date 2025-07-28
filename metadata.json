@@ -1,0 +1,6 @@
+{
+  "name": "Shotokan Kata Randomiser",
+  "description": "An application to randomly select one of the 26 Shotokan Karate katas and display a YouTube video for practice and reference. Ideal for karateka looking to vary their training.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

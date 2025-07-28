@@ -1,0 +1,30 @@
+import { Kata } from './types';
+
+export const SHOTOKAN_KATAS: Kata[] = [
+  { name: 'Heian Shodan', translation: 'Peaceful Mind, First Level' },
+  { name: 'Heian Nidan', translation: 'Peaceful Mind, Second Level' },
+  { name: 'Heian Sandan', translation: 'Peaceful Mind, Third Level' },
+  { name: 'Heian Yondan', translation: 'Peaceful Mind, Fourth Level' },
+  { name: 'Heian Godan', translation: 'Peaceful Mind, Fifth Level' },
+  { name: 'Tekki Shodan', translation: 'Iron Horse, First Level' },
+  { name: 'Tekki Nidan', translation: 'Iron Horse, Second Level' },
+  { name: 'Tekki Sandan', translation: 'Iron Horse, Third Level' },
+  { name: 'Bassai Dai', translation: 'To Penetrate a Fortress (Major)' },
+  { name: 'Bassai Sho', translation: 'To Penetrate a Fortress (Minor)' },
+  { name: 'Kanku Dai', translation: 'To View the Sky (Major)' },
+  { name: 'Kanku Sho', translation: 'To View the Sky (Minor)' },
+  { name: 'Jion', translation: 'Temple Sound' },
+  { name: 'Jitte', translation: 'Ten Hands' },
+  { name: 'Jiin', translation: 'Temple Grounds' },
+  { name: 'Empi', translation: 'Flying Swallow' },
+  { name: 'Hangetsu', translation: 'Half Moon' },
+  { name: 'Gankaku', translation: 'Crane on a Rock' },
+  { name: 'Nijushiho', translation: 'Twenty-Four Steps' },
+  { name: 'Sochin', translation: 'Preserve Peace' },
+  { name: 'Unsu', translation: 'Cloud Hands' },
+  { name: 'Wankan', translation: 'King\'s Crown' },
+  { name: 'Meikyo', translation: 'Bright Mirror' },
+  { name: 'Gojushiho Dai', translation: 'Fifty-Four Steps (Major)' },
+  { name: 'Gojushiho Sho', translation: 'Fifty-Four Steps (Minor)' },
+  { name: 'Chinte', translation: 'Unusual Hands' }
+];
