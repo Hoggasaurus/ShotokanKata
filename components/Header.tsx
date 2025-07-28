@@ -18,7 +18,7 @@ const Header: React.FC = () => {
                 Shotokan Kata Randomiser
             </h1>
         </div>
-      <p className="text-gray-400 mt-2">Click the card to get a new random kata for your training.</p>
+      <p className="text-gray-400 mt-2">Generate a random kata to add to your training list.</p>
     </header>
   );
 };
