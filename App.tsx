@@ -28,19 +28,59 @@ const App: React.FC = () => {
     }, 500); // Prevent spam clicking & allow animation to be seen
   }, [isGenerating]);
 
+  const generateFiveKatas = useCallback(() => {
+    if (isGenerating) return;
+    setIsGenerating(true);
+
+    // Shuffle the array and pick the first 5 to ensure they are unique
+    const shuffledKatas = [...SHOTOKAN_KATAS].sort(() => 0.5 - Math.random());
+    const newKatas = shuffledKatas.slice(0, 5).map(kata => ({
+        ...kata,
+        id: `kata-${Date.now()}-${Math.floor(Math.random() * 1000)}-${kata.id}`
+    }));
+
+    setKataHistory(newKatas);
+
+    setTimeout(() => {
+        setIsGenerating(false);
+    }, 500);
+  }, [isGenerating]);
+
+  const replaceKata = useCallback((idToReplace: string) => {
+    if (isGenerating) return;
+    setIsGenerating(true);
+
+    const randomIndex = Math.floor(Math.random() * SHOTOKAN_KATAS.length);
+    const newKata: Kata = {
+        ...SHOTOKAN_KATAS[randomIndex],
+        id: `kata-${Date.now()}-${Math.floor(Math.random() * 1000)}`
+    };
+
+    setKataHistory(prevHistory => 
+        prevHistory.map(kata => (kata.id === idToReplace ? newKata : kata))
+    );
+
+    setTimeout(() => {
+        setIsGenerating(false);
+    }, 500);
+  }, [isGenerating]);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-start p-4 pt-10 bg-gray-900 text-white antialiased">
       <Header />
       <main className="flex flex-col items-center w-full px-4 mt-8">
-        <div className="mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <ActionButton onClick={addRandomKata} disabled={isGenerating}>
             {isGenerating ? 'Generating...' : 'Generate New Kata'}
+          </ActionButton>
+          <ActionButton onClick={generateFiveKatas} disabled={isGenerating}>
+            {isGenerating ? 'Generating...' : 'Generate 5 Katas'}
           </ActionButton>
         </div>
 
         {kataHistory.length === 0 ? (
           <div className="mt-8 text-center p-8 border-2 border-dashed border-gray-700 rounded-lg w-full max-w-xl min-h-[12rem] flex flex-col justify-center items-center">
-            <p className="text-gray-400 text-lg">Click "Generate New Kata" to begin your training session.</p>
+            <p className="text-gray-400 text-lg">Click a button to begin your training session.</p>
           </div>
         ) : (
           <div className="w-full max-w-xl space-y-6" role="list" aria-live="polite">
@@ -50,6 +90,7 @@ const App: React.FC = () => {
                 <KataDisplay 
                   kata={kata}
                   isNewest={index === 0}
+                  onClick={() => replaceKata(kata.id)}
                 />
               </div>
             ))}
